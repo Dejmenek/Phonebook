@@ -1,8 +1,9 @@
-﻿using PhoneBook.Dejmenek.Enums;
-using PhoneBook.Dejmenek.Models;
+﻿using Phonebook;
+using Phonebook.Enums;
+using Phonebook.Models;
 using Spectre.Console;
 
-namespace PhoneBook.Dejmenek.Services;
+namespace Phonebook.Services;
 
 public class UserInteractionService
 {

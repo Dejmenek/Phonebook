@@ -2,7 +2,7 @@
 using Spectre.Console;
 using System.Text.RegularExpressions;
 
-namespace PhoneBook.Dejmenek;
+namespace Phonebook;
 
 public static class Validation
 {

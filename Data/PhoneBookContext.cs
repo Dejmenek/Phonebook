@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneBook.Dejmenek.Models;
+using Phonebook.Models;
 using System.Configuration;
 
-namespace PhoneBook.Dejmenek.Data;
+namespace Phonebook.Data;
 
 public class PhoneBookContext : DbContext
 {

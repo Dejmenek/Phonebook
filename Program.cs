@@ -1,8 +1,9 @@
-﻿using PhoneBook.Dejmenek.Controllers;
+﻿using Phonebook.Controllers;
+using Phonebook.Enums;
+using Phonebook.Helpers;
+using Phonebook.Services;
 using PhoneBook.Dejmenek.Data;
 using PhoneBook.Dejmenek.Data.Repositories;
-using PhoneBook.Dejmenek.Enums;
-using PhoneBook.Dejmenek.Helpers;
 using PhoneBook.Dejmenek.Services;
 
 internal class Program

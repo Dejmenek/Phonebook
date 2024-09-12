@@ -1,7 +1,8 @@
-﻿using PhoneBook.Dejmenek.Data.Intefaces;
-using PhoneBook.Dejmenek.Models;
+﻿using Phonebook.Data;
+using Phonebook.Data.Intefaces;
+using Phonebook.Models;
 
-namespace PhoneBook.Dejmenek.Data.Repositories;
+namespace Phonebook.Data.Repositories;
 public class CategoriesRepository : ICategoriesRepository
 {
     private readonly PhoneBookContext _context;

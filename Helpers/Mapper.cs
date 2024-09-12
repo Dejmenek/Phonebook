@@ -1,6 +1,6 @@
-﻿using PhoneBook.Dejmenek.Models;
+﻿using Phonebook.Models;
 
-namespace PhoneBook.Dejmenek.Helpers;
+namespace Phonebook.Helpers;
 public static class Mapper
 {
     public static ContactDTO ToContactDTO(Contact contact)

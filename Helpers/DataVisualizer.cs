@@ -1,7 +1,7 @@
-﻿using PhoneBook.Dejmenek.Models;
+﻿using Phonebook.Models;
 using Spectre.Console;
 
-namespace PhoneBook.Dejmenek.Helpers;
+namespace Phonebook.Helpers;
 
 public static class DataVisualizer
 {

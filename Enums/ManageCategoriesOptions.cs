@@ -1,4 +1,4 @@
-﻿namespace PhoneBook.Dejmenek.Enums;
+﻿namespace Phonebook.Enums;
 public enum ManageCategoriesOptions
 {
     Exit,

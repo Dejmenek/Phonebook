@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 
-namespace PhoneBook.Dejmenek.Services;
+namespace Phonebook.Services;
 
 public class SendEmailService
 {

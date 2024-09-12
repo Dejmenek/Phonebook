@@ -1,10 +1,10 @@
-﻿using PhoneBook.Dejmenek.Data.Repositories;
-using PhoneBook.Dejmenek.Helpers;
-using PhoneBook.Dejmenek.Models;
-using PhoneBook.Dejmenek.Services;
+﻿using Phonebook.Data.Repositories;
+using Phonebook.Helpers;
+using Phonebook.Models;
+using Phonebook.Services;
 using Spectre.Console;
 
-namespace PhoneBook.Dejmenek.Controllers;
+namespace Phonebook.Controllers;
 
 public class CategoriesController
 {

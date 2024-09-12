@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace PhoneBook.Dejmenek.Models;
+namespace Phonebook.Models;
 
 [Index(nameof(Name), IsUnique = true)]
 public class Category

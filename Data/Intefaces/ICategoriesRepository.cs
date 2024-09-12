@@ -1,6 +1,6 @@
-﻿using PhoneBook.Dejmenek.Models;
+﻿using Phonebook.Models;
 
-namespace PhoneBook.Dejmenek.Data.Intefaces;
+namespace Phonebook.Data.Intefaces;
 
 public interface ICategoriesRepository
 {

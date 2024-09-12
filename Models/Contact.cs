@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace PhoneBook.Dejmenek.Models;
+namespace Phonebook.Models;
 
 [Index(nameof(PhoneNumber), IsUnique = true)]
 public class Contact
