@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Phonebook.Data;
 using Phonebook.Data.Intefaces;
 using Phonebook.Models;
 
@@ -26,20 +25,12 @@ public class ContactsRepository : IContactsRepository
         _context.SaveChanges();
     }
 
-    public Contact GetContact(int id)
-    {
-        return _context.Contacts.Find(id);
-    }
+    public Contact GetContact(int id) => _context.Contacts.Find(id);
 
-    public List<Contact> GetAllContacts()
-    {
-        return _context.Contacts.Include(c => c.Category).ToList();
-    }
+    public List<Contact> GetAllContacts() => _context.Contacts.Include(c => c.Category).ToList();
 
-    public List<Contact> GetContactsByCategory(int categoryId)
-    {
-        return _context.Contacts.Include(c => c.Category).Where(c => c.CategoryId == categoryId).ToList();
-    }
+    public List<Contact> GetContactsByCategory(int categoryId) =>
+        _context.Contacts.Include(c => c.Category).Where(c => c.CategoryId == categoryId).ToList();
 
     public void UpdateContact(Contact contact)
     {
@@ -47,8 +38,5 @@ public class ContactsRepository : IContactsRepository
         _context.SaveChanges();
     }
 
-    public bool PhoneNumberExists(string phoneNumber)
-    {
-        return _context.Contacts.Any(c => c.PhoneNumber == phoneNumber);
-    }
+    public bool PhoneNumberExists(string phoneNumber) => _context.Contacts.Any(c => c.PhoneNumber == phoneNumber);
 }

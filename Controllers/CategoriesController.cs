@@ -12,23 +12,11 @@ public class CategoriesController
         _categoriesService = categoriesService;
     }
 
-    public void AddCategory()
-    {
-        _categoriesService.AddCategory();
-    }
+    public void AddCategory() => _categoriesService.AddCategory();
 
-    public void UpdateCategory()
-    {
-        _categoriesService.UpdateCategory();
-    }
+    public void UpdateCategory() => _categoriesService.UpdateCategory();
 
-    public void DeleteCategory()
-    {
-        _categoriesService.DeleteCategory();
-    }
+    public void DeleteCategory() => _categoriesService.DeleteCategory();
 
-    public List<CategoryDTO> GetCategories()
-    {
-        return _categoriesService.GetCategories();
-    }
+    public List<CategoryDTO> GetCategories() => _categoriesService.GetCategories();
 }

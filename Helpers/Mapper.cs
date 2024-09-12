@@ -3,24 +3,17 @@
 namespace Phonebook.Helpers;
 public static class Mapper
 {
-    public static ContactDTO ToContactDTO(Contact contact)
-    {
-        return new ContactDTO
+    public static ContactDTO ToContactDTO(Contact contact) =>
+        new ContactDTO
         {
             Name = contact.Name,
             Email = contact.Email ?? "",
             PhoneNumber = contact.PhoneNumber,
             CategoryName = contact.Category?.Name ?? ""
         };
-    }
 
-    public static CategoryDTO ToCategoryDTO(Category category)
-    {
-        return new CategoryDTO
-        {
-            Name = category.Name
-        };
-    }
+    public static CategoryDTO ToCategoryDTO(Category category) =>
+        new CategoryDTO { Name = category.Name };
 
     public static List<ContactDTO> ToContactDTOs(List<Contact> contacts)
     {

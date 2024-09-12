@@ -12,33 +12,15 @@ public class ContactsController
         _contactsService = contactsService;
     }
 
-    public void AddContact()
-    {
-        _contactsService.AddContact();
-    }
+    public void AddContact() => _contactsService.AddContact();
 
-    public void UpdateContact()
-    {
-        _contactsService.UpdateContact();
-    }
+    public void UpdateContact() => _contactsService.UpdateContact();
 
-    public void DeleteContact()
-    {
-        _contactsService.DeleteContact();
-    }
+    public void DeleteContact() => _contactsService.DeleteContact();
 
-    public List<ContactDTO> GetContactsByCategory()
-    {
-        return _contactsService.GetContactsByCategory();
-    }
+    public List<ContactDTO> GetContactsByCategory() => _contactsService.GetContactsByCategory();
 
-    public List<ContactDTO> GetAllContacts()
-    {
-        return _contactsService.GetAllContacts();
-    }
+    public List<ContactDTO> GetAllContacts() => _contactsService.GetAllContacts();
 
-    public void SendEmail()
-    {
-        _contactsService.SendEmail();
-    }
+    public void SendEmail() => _contactsService.SendEmail();
 }

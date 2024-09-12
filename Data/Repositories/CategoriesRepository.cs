@@ -1,5 +1,4 @@
-﻿using Phonebook.Data;
-using Phonebook.Data.Intefaces;
+﻿using Phonebook.Data.Intefaces;
 using Phonebook.Models;
 
 namespace Phonebook.Data.Repositories;
@@ -30,13 +29,7 @@ public class CategoriesRepository : ICategoriesRepository
         _context.SaveChanges();
     }
 
-    public bool CategoryExists(string name)
-    {
-        return _context.Categories.Any(cat => cat.Name == name);
-    }
+    public bool CategoryExists(string name) => _context.Categories.Any(cat => cat.Name == name);
 
-    public List<Category> GetCategories()
-    {
-        return _context.Categories.ToList();
-    }
+    public List<Category> GetCategories() => _context.Categories.ToList();
 }
