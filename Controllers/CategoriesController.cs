@@ -1,99 +1,34 @@
-﻿using Phonebook.Data.Repositories;
-using Phonebook.Helpers;
-using Phonebook.Models;
+﻿using Phonebook.Models;
 using Phonebook.Services;
-using Spectre.Console;
 
 namespace Phonebook.Controllers;
 
 public class CategoriesController
 {
-    private readonly UserInteractionService _userInteractionService;
-    private readonly CategoriesRepository _categoriesRepository;
+    private readonly CategoriesService _categoriesService;
 
-    public CategoriesController(UserInteractionService userInteractionService, CategoriesRepository categoriesRepository)
+    public CategoriesController(CategoriesService categoriesService)
     {
-        _userInteractionService = userInteractionService;
-        _categoriesRepository = categoriesRepository;
+        _categoriesService = categoriesService;
     }
 
     public void AddCategory()
     {
-        string name = _userInteractionService.GetCategoryName();
-
-        while (_categoriesRepository.CategoryExists(name))
-        {
-            AnsiConsole.MarkupLine($"There is already a category named {name}. Please try a different name.");
-            name = _userInteractionService.GetCategoryName();
-        }
-
-        Category category = new Category
-        {
-            Name = name
-        };
-
-        _categoriesRepository.AddCategory(category);
+        _categoriesService.AddCategory();
     }
 
     public void UpdateCategory()
     {
-        Category? categoryToUpdate = GetCategory();
-
-        if (categoryToUpdate is null)
-        {
-            AnsiConsole.MarkupLine("There are currently no categories available. Please create some categories before updating a category.");
-            return;
-        }
-
-        string name = _userInteractionService.GetCategoryName();
-
-        while (_categoriesRepository.CategoryExists(name))
-        {
-            AnsiConsole.MarkupLine($"There is already a category named {name}. Please try a different name.");
-            name = _userInteractionService.GetCategoryName();
-        }
-
-        categoryToUpdate.Name = name;
-
-        _categoriesRepository.UpdateCategory(categoryToUpdate);
-    }
-
-    public Category? GetCategory()
-    {
-        List<Category> categories = _categoriesRepository.GetCategories();
-
-        if (categories.Count == 0)
-        {
-            return null;
-        }
-
-        Category chosenCategory = _userInteractionService.GetCategory(categories);
-
-        return chosenCategory;
+        _categoriesService.UpdateCategory();
     }
 
     public void DeleteCategory()
     {
-        Category? categoryToDelete = GetCategory();
-
-        if (categoryToDelete is null)
-        {
-            AnsiConsole.MarkupLine("There are currently no categories available. Please create some categories before deleting a category.");
-            return;
-        }
-
-        _categoriesRepository.DeleteCategory(categoryToDelete.Id);
+        _categoriesService.DeleteCategory();
     }
 
     public List<CategoryDTO> GetCategories()
     {
-        var categories = _categoriesRepository.GetCategories();
-
-        if (categories.Count == 0)
-        {
-            return [];
-        }
-
-        return Mapper.ToCategoryDTOs(categories);
+        return _categoriesService.GetCategories();
     }
 }

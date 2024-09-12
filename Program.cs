@@ -17,8 +17,9 @@ internal class Program
 
         var userInteractionService = new UserInteractionService();
         var sendEmailService = new SendEmailService(userInteractionService);
+        var categoriesService = new CategoriesService(userInteractionService, categoriesRepository);
 
-        var categoriesController = new CategoriesController(userInteractionService, categoriesRepository);
+        var categoriesController = new CategoriesController(categoriesService);
         var contactsController = new ContactsController(contactsRepository, categoriesRepository, userInteractionService, sendEmailService);
 
 
