@@ -48,13 +48,7 @@ public class ContactsService
             email = _userInteractionService.GetEmail();
         }
 
-        string phoneNumber = _userInteractionService.GetPhoneNumber();
-
-        while (_contactsRepository.PhoneNumberExists(phoneNumber))
-        {
-            AnsiConsole.MarkupLine("There is already someone with provided phone number. Please try again.");
-            phoneNumber = _userInteractionService.GetPhoneNumber();
-        }
+        string phoneNumber = GetUniquePhoneNumber();
 
         Contact contact = new Contact
         {
@@ -99,12 +93,7 @@ public class ContactsService
 
         if (_userInteractionService.GetConfirmation("Do you want to update the phone number? (y/n)"))
         {
-            string phoneNumber = _userInteractionService.GetPhoneNumber();
-
-            while (_contactsRepository.PhoneNumberExists(phoneNumber))
-            {
-                phoneNumber = _userInteractionService.GetPhoneNumber();
-            }
+            string phoneNumber = GetUniquePhoneNumber();
 
             contactToUpdate.PhoneNumber = phoneNumber;
         }
@@ -194,5 +183,18 @@ public class ContactsService
         {
             AnsiConsole.MarkupLine("Chosen contact doesn't have setted email");
         }
+    }
+
+    private string GetUniquePhoneNumber()
+    {
+        string phoneNumber = _userInteractionService.GetPhoneNumber();
+
+        while (_contactsRepository.PhoneNumberExists(phoneNumber))
+        {
+            AnsiConsole.MarkupLine($"The phone number you entered is already in use. Please provide a different phone number.");
+            phoneNumber = _userInteractionService.GetPhoneNumber();
+        }
+
+        return phoneNumber;
     }
 }
