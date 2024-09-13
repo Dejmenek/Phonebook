@@ -17,13 +17,7 @@ public class CategoriesService
 
     public void AddCategory()
     {
-        string name = _userInteractionService.GetCategoryName();
-
-        while (_categoriesRepository.CategoryExists(name))
-        {
-            AnsiConsole.MarkupLine($"There is already a category named {name}. Please try a different name.");
-            name = _userInteractionService.GetCategoryName();
-        }
+        string name = GetUniqueCategoryName();
 
         Category category = new Category
         {
@@ -42,13 +36,7 @@ public class CategoriesService
             return;
         }
 
-        string name = _userInteractionService.GetCategoryName();
-
-        while (_categoriesRepository.CategoryExists(name))
-        {
-            AnsiConsole.MarkupLine($"There is already a category named {name}. Please try a different name.");
-            name = _userInteractionService.GetCategoryName();
-        }
+        string name = GetUniqueCategoryName();
 
         categoryToUpdate.Name = name;
 
@@ -94,4 +82,16 @@ public class CategoriesService
         return Mapper.ToCategoryDTOs(categories);
     }
 
+    private string GetUniqueCategoryName()
+    {
+        string name = _userInteractionService.GetCategoryName();
+
+        while (_categoriesRepository.CategoryExists(name))
+        {
+            AnsiConsole.MarkupLine($"There is already a category named {name}. Please try a different name.");
+            name = _userInteractionService.GetCategoryName();
+        }
+
+        return name;
+    }
 }
