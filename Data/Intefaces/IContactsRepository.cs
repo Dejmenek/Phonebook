@@ -5,7 +5,6 @@ namespace Phonebook.Data.Intefaces;
 public interface IContactsRepository
 {
     void AddContact(Contact contact);
-    Contact GetContact(int id);
     void DeleteContact(int id);
     void UpdateContact(Contact contact);
     List<Contact> GetAllContacts();

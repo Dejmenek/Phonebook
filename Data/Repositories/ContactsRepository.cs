@@ -25,8 +25,6 @@ public class ContactsRepository : IContactsRepository
         _context.SaveChanges();
     }
 
-    public Contact GetContact(int id) => _context.Contacts.Find(id);
-
     public List<Contact> GetAllContacts() => _context.Contacts.Include(c => c.Category).ToList();
 
     public List<Contact> GetContactsByCategory(int categoryId) =>
