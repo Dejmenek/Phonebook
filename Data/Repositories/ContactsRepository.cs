@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Phonebook.Data.Intefaces;
+using Phonebook.Enums;
 using Phonebook.Models;
+using System.Linq.Expressions;
 
 namespace Phonebook.Data.Repositories;
 public class ContactsRepository : IContactsRepository
@@ -25,7 +27,34 @@ public class ContactsRepository : IContactsRepository
         _context.SaveChanges();
     }
 
-    public List<Contact> GetAllContacts() => _context.Contacts.Include(c => c.Category).ToList();
+    public List<Contact> GetAllContacts(
+        SortingOptionsColumn sortingOptionColumn = SortingOptionsColumn.Name,
+        SortingOptionsOrder sortingOptionOrder = SortingOptionsOrder.Ascending
+    )
+    {
+        IQueryable<Contact> contactsQuery = _context.Contacts.Include(c => c.Category);
+
+        Expression<Func<Contact, object>> keySelector = sortingOptionColumn switch
+        {
+            SortingOptionsColumn.Name => contact => contact.Name,
+            SortingOptionsColumn.Email => contact => contact.Email ?? "",
+            SortingOptionsColumn.CategoryName => contact => contact.Category != null ? contact.Category.Name : "",
+            _ => contact => contact.Id,
+        };
+
+        if (sortingOptionOrder == SortingOptionsOrder.Descending)
+        {
+            contactsQuery = contactsQuery.OrderByDescending(keySelector);
+        }
+        else
+        {
+            contactsQuery = _context.Contacts.OrderBy(keySelector);
+        }
+
+        var contacts = contactsQuery.ToList();
+
+        return contacts;
+    }
 
     public List<Contact> GetContactsByCategory(int categoryId) =>
         _context.Contacts.Include(c => c.Category).Where(c => c.CategoryId == categoryId).ToList();

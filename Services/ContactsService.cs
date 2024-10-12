@@ -1,4 +1,5 @@
 ﻿using Phonebook.Data.Repositories;
+using Phonebook.Enums;
 using Phonebook.Helpers;
 using Phonebook.Models;
 using Spectre.Console;
@@ -154,9 +155,9 @@ public class ContactsService
         return chosenContact;
     }
 
-    public List<ContactDTO> GetAllContacts()
+    public List<ContactDTO> GetAllContacts(SortingOptionsColumn sortingOptionColumn, SortingOptionsOrder sortingOptionsOrder)
     {
-        var contacts = _contactsRepository.GetAllContacts();
+        var contacts = _contactsRepository.GetAllContacts(sortingOptionColumn, sortingOptionsOrder);
 
         if (contacts.Count == 0)
         {

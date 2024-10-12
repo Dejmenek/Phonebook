@@ -76,7 +76,9 @@ internal class Program
                     break;
 
                 case ManageContactsOptions.ViewAllContacts:
-                    var contacts = contactsController.GetAllContacts();
+                    var selectedSortingOptionColumn = userInteractionService.GetSortingOptionColumn();
+                    var selectedSortingOptionOrder = userInteractionService.GetSortingOptionOrder();
+                    var contacts = contactsController.GetAllContacts(selectedSortingOptionColumn, selectedSortingOptionOrder);
                     DataVisualizer.DisplayContacts(contacts);
                     userInteractionService.GetUserInputToContinue();
                     Console.Clear();

@@ -81,6 +81,20 @@ public class UserInteractionService
                 .AddChoices(contacts)
         );
 
+    public SortingOptionsColumn GetSortingOptionColumn() =>
+        AnsiConsole.Prompt(
+            new SelectionPrompt<SortingOptionsColumn>()
+                .Title("Select sorting column")
+                .AddChoices(Enum.GetValues<SortingOptionsColumn>())
+        );
+
+    public SortingOptionsOrder GetSortingOptionOrder() =>
+        AnsiConsole.Prompt(
+            new SelectionPrompt<SortingOptionsOrder>()
+                .Title("Select sorting order")
+                .AddChoices(Enum.GetValues<SortingOptionsOrder>())
+        );
+
     public MenuOptions GetMenuOption() =>
         AnsiConsole.Prompt(
             new SelectionPrompt<MenuOptions>()

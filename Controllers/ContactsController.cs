@@ -1,4 +1,5 @@
-﻿using Phonebook.Models;
+﻿using Phonebook.Enums;
+using Phonebook.Models;
 using Phonebook.Services;
 
 namespace Phonebook.Controllers;
@@ -20,7 +21,8 @@ public class ContactsController
 
     public List<ContactDTO> GetContactsByCategory() => _contactsService.GetContactsByCategory();
 
-    public List<ContactDTO> GetAllContacts() => _contactsService.GetAllContacts();
+    public List<ContactDTO> GetAllContacts(SortingOptionsColumn sortingOptionColumn, SortingOptionsOrder sortingOptionOrder) =>
+        _contactsService.GetAllContacts(sortingOptionColumn, sortingOptionOrder);
 
     public void SendEmail() => _contactsService.SendEmail();
 }
